@@ -1,0 +1,38 @@
+name: Build Charcoal Browser
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'ci/request/**'
+permissions:
+  contents: read
+concurrency:
+  group: charcoal-android-release
+  cancel-in-progress: false
+jobs:
+  android:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    steps:
+      - name: Check out the build recipe
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Prepare the runner
+        run: bash ci/prepare.sh
+      - name: Compile Firefox for ARM64
+        run: bash build.sh --unsigned
+      - name: Sign and verify the release
+        env:
+          CHARCOAL_KEYSTORE_B64: ${{ secrets.CHARCOAL_KEYSTORE_B64 }}
+          CHARCOAL_KEYSTORE_PASSWORD: ${{ secrets.CHARCOAL_KEYSTORE_PASSWORD }}
+        run: bash ci/finish.sh
+      - name: Upload the verified build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: CharcoalBrowser-160.0-arm64
+          path: dist/download/*
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 30
