@@ -28,7 +28,14 @@ jobs:
           CHARCOAL_KEYSTORE_B64: ${{ secrets.CHARCOAL_KEYSTORE_B64 }}
           CHARCOAL_KEYSTORE_PASSWORD: ${{ secrets.CHARCOAL_KEYSTORE_PASSWORD }}
         run: bash ci/finish.sh
-      - name: Upload the verified build
+      - name: Preserve the encrypted key backup
+        if: ${{ hashFiles('dist/recovery/signing-key.cms') != '' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: CharcoalBrowser-encrypted-key-backup
+          path: dist/recovery/signing-key.cms
+          retention-days: 30
+      - name: Upload the Android package
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: CharcoalBrowser-160.0-arm64

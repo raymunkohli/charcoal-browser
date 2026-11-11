@@ -1,0 +1,1164 @@
+diff --git a/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornColors.kt b/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornColors.kt
+index 931fcde2026a28f22f1fe422e31b0c0d1669a294..04231e3d2b120d716897ff365840dda45c79fde9 100644
+--- a/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornColors.kt
++++ b/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornColors.kt
+@@ -193,25 +193,25 @@ class AcornColors(
+ 
+ val darkColorPalette =
+     AcornColors(
+-        formDefault = PhotonColors.LightGrey05,
++        formDefault = Charcoal.Text,
+         information = NovaColors.Blue30,
+         onInformation = NovaColors.Gray80,
+         informationContainer = NovaColors.Blue70,
+-        onInformationContainer = NovaColors.VioletDesaturated0,
++        onInformationContainer = Charcoal.Text,
+         success = NovaColors.Green30,
+         onSuccess = NovaColors.Gray80,
+         successContainer = NovaColors.Green70,
+-        onSuccessContainer = NovaColors.VioletDesaturated0,
++        onSuccessContainer = Charcoal.Text,
+         warning = NovaColors.Yellow30,
+         onWarning = NovaColors.Gray80,
+         warningContainer = NovaColors.Yellow70,
+-        onWarningContainer = NovaColors.VioletDesaturated0,
+-        surfaceDimVariant = NovaColors.Gray80,
+-        surfaceContainerSelected = NovaColors.Gray55,
+-        autofillText = NovaColors.VioletDesaturated30A55,
+-        selectedText = NovaColors.Gray45A80,
+-        iconPrivate = NovaColors.Violet50,
+-        sheetOutline = NovaColors.Gray75,
++        onWarningContainer = Charcoal.Text,
++        surfaceDimVariant = Charcoal.Low,
++        surfaceContainerSelected = Charcoal.Selected,
++        autofillText = Charcoal.Muted,
++        selectedText = Charcoal.Badge,
++        iconPrivate = Charcoal.Badge,
++        sheetOutline = Charcoal.Divider,
+     )
+ 
+ val lightColorPalette =
+@@ -237,68 +237,61 @@ val lightColorPalette =
+         sheetOutline = NovaColors.Gray5,
+     )
+ 
+-val privateColorPalette =
+-    darkColorPalette.copy(
+-        surfaceDimVariant = Color(0xFF11042B),
+-        surfaceContainerSelected = NovaColors.VioletDesaturated60,
+-        selectedText = NovaColors.Gray45A81,
+-        sheetOutline = NovaColors.VioletDesaturated90,
+-    )
++val privateColorPalette = darkColorPalette
+ 
+-val oledColorPalette =
+-    darkColorPalette.copy(
+-        informationContainer = NovaColors.Blue80,
+-        onInformationContainer = NovaColors.Gray20,
+-        successContainer = NovaColors.Green80,
+-        onSuccessContainer = NovaColors.Gray20,
+-        warningContainer = NovaColors.Yellow80,
+-        onWarningContainer = NovaColors.Gray20,
+-        surfaceDimVariant = NovaColors.Gray90,
+-        surfaceContainerSelected = NovaColors.Gray65,
+-        autofillText = NovaColors.VioletDesaturated60,
+-        selectedText = NovaColors.Gray60,
+-        sheetOutline = NovaColors.Gray65,
+-    )
++val oledColorPalette = darkColorPalette
+ 
+ /** Returns a dark Material color scheme mapped from Acorn. */
+ fun acornDarkColorScheme(): ColorScheme =
+     darkColorScheme(
+-        primary = NovaColors.Violet20,
+-        onPrimary = NovaColors.Gray80,
+-        primaryContainer = NovaColors.Violet60,
+-        onPrimaryContainer = NovaColors.VioletDesaturated0,
+-        inversePrimary = NovaColors.Violet70,
+-        secondary = NovaColors.Gray20,
+-        onSecondary = NovaColors.Gray80,
+-        secondaryContainer = NovaColors.VioletDesaturated70,
+-        onSecondaryContainer = NovaColors.VioletDesaturated0,
+-        tertiary = NovaColors.Violet30,
+-        onTertiary = NovaColors.Gray80,
+-        tertiaryContainer = NovaColors.VioletDesaturated90,
+-        onTertiaryContainer = NovaColors.VioletDesaturated0,
+-        background = NovaColors.Gray75,
+-        onBackground = NovaColors.VioletDesaturated0,
+-        surface = NovaColors.Gray75,
+-        onSurface = NovaColors.VioletDesaturated0,
+-        surfaceVariant = NovaColors.Gray65,
+-        onSurfaceVariant = NovaColors.VioletDesaturated0A70,
+-        surfaceTint = NovaColors.Gray50,
+-        inverseSurface = NovaColors.Gray30,
+-        inverseOnSurface = NovaColors.Gray80,
++        primary = Charcoal.Silver,
++        onPrimary = Charcoal.Black,
++        primaryContainer = Charcoal.Selected,
++        onPrimaryContainer = Charcoal.Text,
++        inversePrimary = Charcoal.Panel,
++        secondary = Charcoal.Muted,
++        onSecondary = Charcoal.Black,
++        secondaryContainer = Charcoal.Raised,
++        onSecondaryContainer = Charcoal.Text,
++        tertiary = Charcoal.Silver,
++        onTertiary = Charcoal.Black,
++        tertiaryContainer = Charcoal.High,
++        onTertiaryContainer = Charcoal.Text,
++        background = Charcoal.Black,
++        onBackground = Charcoal.Text,
++        surface = Charcoal.Black,
++        onSurface = Charcoal.Text,
++        surfaceVariant = Charcoal.Raised,
++        onSurfaceVariant = Charcoal.Muted,
++        surfaceTint = Charcoal.Black,
++        inverseSurface = Charcoal.Silver,
++        inverseOnSurface = Charcoal.Black,
+         error = NovaColors.Red30,
+         onError = NovaColors.Gray80,
+         errorContainer = NovaColors.Red70,
+-        onErrorContainer = NovaColors.VioletDesaturated0,
+-        outline = NovaColors.Gray45,
+-        outlineVariant = NovaColors.Gray60,
++        onErrorContainer = Charcoal.Text,
++        outline = Charcoal.Outline,
++        outlineVariant = Charcoal.Divider,
+         scrim = NovaColors.BlackA50,
+-        surfaceBright = NovaColors.Gray65,
+-        surfaceDim = NovaColors.Gray85,
+-        surfaceContainer = NovaColors.Gray75,
+-        surfaceContainerHigh = NovaColors.Gray70,
+-        surfaceContainerHighest = NovaColors.Gray65,
+-        surfaceContainerLow = NovaColors.Gray80,
+-        surfaceContainerLowest = NovaColors.Gray85,
++        surfaceBright = Charcoal.High,
++        surfaceDim = Charcoal.Black,
++        surfaceContainer = Charcoal.Panel,
++        surfaceContainerHigh = Charcoal.Raised,
++        surfaceContainerHighest = Charcoal.High,
++        surfaceContainerLow = Charcoal.Low,
++        surfaceContainerLowest = Charcoal.Black,
++        primaryFixed = Charcoal.Silver,
++        primaryFixedDim = Charcoal.Muted,
++        onPrimaryFixed = Charcoal.Black,
++        onPrimaryFixedVariant = Charcoal.Panel,
++        secondaryFixed = Charcoal.Silver,
++        secondaryFixedDim = Charcoal.Muted,
++        onSecondaryFixed = Charcoal.Black,
++        onSecondaryFixedVariant = Charcoal.Panel,
++        tertiaryFixed = Charcoal.Silver,
++        tertiaryFixedDim = Charcoal.Muted,
++        onTertiaryFixed = Charcoal.Black,
++        onTertiaryFixedVariant = Charcoal.Panel,
+     )
+ 
+ /** Returns a light Material color scheme mapped from Acorn. */
+@@ -343,75 +336,10 @@ fun acornLightColorScheme(): ColorScheme =
+     )
+ 
+ /** Returns a private Material color scheme mapped from Acorn. */
+-fun acornPrivateColorScheme(): ColorScheme =
+-    darkColorScheme(
+-        primary = NovaColors.Violet20,
+-        onPrimary = NovaColors.Gray80,
+-        primaryContainer = NovaColors.Violet60,
+-        onPrimaryContainer = NovaColors.VioletDesaturated0,
+-        inversePrimary = NovaColors.Violet70,
+-        secondary = NovaColors.Gray20,
+-        onSecondary = NovaColors.Gray80,
+-        secondaryContainer = NovaColors.Violet70,
+-        onSecondaryContainer = NovaColors.VioletDesaturated0,
+-        tertiary = NovaColors.Violet30,
+-        onTertiary = NovaColors.Gray80,
+-        tertiaryContainer = NovaColors.VioletDesaturated90,
+-        onTertiaryContainer = NovaColors.VioletDesaturated0,
+-        background = NovaColors.VioletDesaturated90,
+-        onBackground = NovaColors.VioletDesaturated0,
+-        surface = NovaColors.VioletDesaturated90,
+-        onSurface = NovaColors.VioletDesaturated0,
+-        surfaceVariant = NovaColors.VioletDesaturated80,
+-        onSurfaceVariant = NovaColors.VioletDesaturated0A70,
+-        surfaceTint = NovaColors.VioletDesaturated60,
+-        inverseSurface = NovaColors.Gray30,
+-        inverseOnSurface = NovaColors.Gray80,
+-        error = NovaColors.Red30,
+-        onError = NovaColors.Gray80,
+-        errorContainer = NovaColors.Red70,
+-        onErrorContainer = NovaColors.VioletDesaturated0,
+-        outline = NovaColors.Gray45,
+-        outlineVariant = Color(0xFF332752),
+-        scrim = NovaColors.BlackA50,
+-        surfaceBright = NovaColors.VioletDesaturated80,
+-        surfaceDim = Color(0xFF0D0321),
+-        surfaceContainer = NovaColors.VioletDesaturated90,
+-        surfaceContainerHigh = Color(0xFF20163A),
+-        surfaceContainerHighest = NovaColors.VioletDesaturated80,
+-        surfaceContainerLow = Color(0xFF11042B),
+-        surfaceContainerLowest = Color(0xFF0D0321),
+-    )
++fun acornPrivateColorScheme(): ColorScheme = acornDarkColorScheme()
+ 
+ /** Returns an OLED dark Material color scheme mapped from Acorn. */
+-fun acornOledColorScheme(): ColorScheme =
+-    acornDarkColorScheme()
+-        .copy(
+-            primaryContainer = NovaColors.Violet70,
+-            onPrimaryContainer = NovaColors.Gray20,
+-            secondaryContainer = NovaColors.VioletDesaturated80,
+-            onSecondaryContainer = NovaColors.Gray20,
+-            tertiaryContainer = NovaColors.Gray90,
+-            onTertiaryContainer = NovaColors.Gray20,
+-            background = NovaColors.Black,
+-            onBackground = NovaColors.Gray20,
+-            surface = NovaColors.Black,
+-            onSurface = NovaColors.Gray20,
+-            onSurfaceVariant = NovaColors.Gray40,
+-            errorContainer = NovaColors.Red80,
+-            onErrorContainer = NovaColors.Gray20,
+-            outline = NovaColors.Gray50,
+-            outlineVariant = NovaColors.Gray65,
+-            surfaceBright = NovaColors.Gray80,
+-            surfaceDim = NovaColors.Black,
+-            surfaceContainer = NovaColors.Black,
+-            surfaceContainerHigh = NovaColors.Gray90,
+-            surfaceContainerHighest = NovaColors.Gray80,
+-            surfaceContainerLow = NovaColors.Gray90,
+-            surfaceContainerLowest = NovaColors.Black,
+-        )
+-
+-// M3 color scheme extensions
++fun acornOledColorScheme(): ColorScheme = acornDarkColorScheme()
+ 
+ /** @see AcornColors.information */
+ val ColorScheme.information: Color
+diff --git a/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornGradientScheme.kt b/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornGradientScheme.kt
+index 1b652a3215cbdef17c6af10edf4a15547bdc231f..8448740022f1777b410e59f7566ced33d8e2f610 100644
+--- a/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornGradientScheme.kt
++++ b/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/AcornGradientScheme.kt
+@@ -149,38 +149,30 @@ val lightAcornGradientScheme =
+ 
+ val darkAcornGradientScheme =
+     AcornGradientScheme(
+-        cfr = cfr,
+-        accent = darkAccent,
+-        accentSubtle =
+-            AcornGradient(
+-                type = AcornGradientType.Linear(angleInDegrees = ACCENT_GRADIENT_ANGLE),
+-                colorStops =
+-                    listOf(
+-                        ColorStop(0.4f, NovaColors.VioletDesaturated90A40),
+-                        ColorStop(1f, NovaColors.Orange70A50),
+-                    ),
++        cfr =
++            cfr.copy(
++                colorStops = listOf(ColorStop(0f, Charcoal.Raised), ColorStop(1f, Charcoal.Selected)),
++            ),
++        accent =
++            darkAccent.copy(
++                colorStops = listOf(ColorStop(0f, Charcoal.Divider), ColorStop(1f, Charcoal.Badge)),
+             ),
+-        tabOutline = tabOutline,
+-        privacyMask = privacyMask,
+-    )
+-
+-val privateAcornGradientScheme =
+-    AcornGradientScheme(
+-        cfr = cfr,
+-        accent = darkAccent,
+         accentSubtle =
+-            AcornGradient(
+-                type = AcornGradientType.Linear(angleInDegrees = ACCENT_GRADIENT_ANGLE),
+-                colorStops =
+-                    listOf(
+-                        ColorStop(0.4f, NovaColors.VioletDesaturated80),
+-                        ColorStop(1f, NovaColors.VioletDesaturated80),
+-                    ),
++            darkAccent.copy(
++                colorStops = listOf(ColorStop(0f, Charcoal.Black), ColorStop(1f, Charcoal.Low)),
++            ),
++        tabOutline =
++            tabOutline.copy(
++                colorStops = listOf(ColorStop(0f, Charcoal.Silver), ColorStop(1f, Charcoal.Outline)),
++            ),
++        privacyMask =
++            privacyMask.copy(
++                colorStops = listOf(ColorStop(0f, Charcoal.Silver), ColorStop(1f, Charcoal.Text)),
+             ),
+-        tabOutline = tabOutline,
+-        privacyMask = privacyMask,
+     )
+ 
++val privateAcornGradientScheme = darkAcornGradientScheme
++
+ val oledAcornGradientScheme = darkAcornGradientScheme
+ 
+ internal val localAcornGradients = staticCompositionLocalOf {
+diff --git a/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/Charcoal.kt b/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/Charcoal.kt
+new file mode 100644
+index 0000000000000000000000000000000000000000..0095f0ea67233d34ac7a0c197c328e84fb9416c9
+--- /dev/null
++++ b/mobile/android/android-components/components/compose/base/src/main/java/mozilla/components/compose/base/theme/Charcoal.kt
+@@ -0,0 +1,24 @@
++/* This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
++
++package mozilla.components.compose.base.theme
++
++import androidx.compose.ui.graphics.Color
++
++/** Neutral colours used by the dark and private browser interface. */
++@Suppress("MagicNumber")
++internal object Charcoal {
++    val Black = Color(0xFF000000)
++    val Low = Color(0xFF0C0C0C)
++    val Panel = Color(0xFF161616)
++    val Raised = Color(0xFF222222)
++    val High = Color(0xFF2C2C2C)
++    val Selected = Color(0xFF3A3A3A)
++    val Divider = Color(0xFF494949)
++    val Badge = Color(0xFF686868)
++    val Outline = Color(0xFF8A8A8A)
++    val Muted = Color(0xFFBDBDBD)
++    val Silver = Color(0xFFD8D8D8)
++    val Text = Color(0xFFF2F2F2)
++}
+diff --git a/mobile/android/fenix/app/build.gradle b/mobile/android/fenix/app/build.gradle
+index 03399d00fcf00ae37cecd164ed74de7d9c1ff14f..34ac5b0b1c08f400f86102f200904fc7e2406bad 100644
+--- a/mobile/android/fenix/app/build.gradle
++++ b/mobile/android/fenix/app/build.gradle
+@@ -47,7 +47,7 @@ android {
+             arg("room.schemaLocation", "$projectDir/schemas".toString())
+         }
+ 
+-        applicationId "org.mozilla"
++        applicationId "app.charcoal"
+         minSdk config.minSdkVersion
+         targetSdk config.targetSdkVersion
+         versionCode 1
+@@ -141,20 +141,10 @@ android {
+         }
+         release releaseTemplate >> {
+             buildConfigField "boolean", "USE_RELEASE_VERSIONING", "true"
+-            applicationIdSuffix ".firefox"
+-            def deepLinkSchemeValue = "fenix"
++            applicationIdSuffix ".browser"
++            def deepLinkSchemeValue = "charcoal-browser"
+             buildConfigField "String", "DEEP_LINK_SCHEME", "\"$deepLinkSchemeValue\""
+-            manifestPlaceholders.putAll([
+-                    // This release type is meant to replace Firefox (Release channel) and therefore needs to inherit
+-                    // its sharedUserId for all eternity. See:
+-                    // https://searchfox.org/mozilla-esr68/search?q=moz_android_shared_id&case=false&regexp=false&path=
+-                    // Shipping an app update without sharedUserId can have
+-                    // fatal consequences. For example see:
+-                    //  - https://issuetracker.google.com/issues/36924841
+-                    //  - https://issuetracker.google.com/issues/36905922
+-                    "sharedUserId": "org.mozilla.firefox.sharedID",
+-                    "deepLinkScheme": deepLinkSchemeValue,
+-            ])
++            manifestPlaceholders.putAll(["deepLinkScheme": deepLinkSchemeValue])
+         }
+         benchmark releaseTemplate >> {
+             initWith buildTypes.nightly
+diff --git a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/FenixApplication.kt b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/FenixApplication.kt
+index 697146f5641412ac653d9d61e90a51403db55f37..309d987ffed2a022a6590e09249898ec5ccba488 100644
+--- a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/FenixApplication.kt
++++ b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/FenixApplication.kt
+@@ -880,15 +880,10 @@ open class FenixApplication : Application(), Provider, ThemeProvider {
+             SDK_INT >= Build.VERSION_CODES.P && settings.shouldFollowDeviceTheme -> {
+                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+             }
+-            // First run of app no default set, set the default to Follow System for 28+ and Normal Mode otherwise
++            // Start a new profile in the dark browser theme. Later choices are kept above.
+             else -> {
+-                if (SDK_INT >= Build.VERSION_CODES.P) {
+-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+-                    settings.shouldFollowDeviceTheme = true
+-                } else {
+-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+-                    settings.shouldUseLightTheme = true
+-                }
++                settings.shouldUseDarkTheme = true
++                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+             }
+         }
+     }
+diff --git a/mobile/android/fenix/app/src/main/res/color/private_mode_mask_gradient.xml b/mobile/android/fenix/app/src/main/res/color/private_mode_mask_gradient.xml
+index 034e5535548a7b468c5b2be6cc0cc90f89ad24e8..e9380412afcedebaa79c09c95967faa523a914a7 100644
+--- a/mobile/android/fenix/app/src/main/res/color/private_mode_mask_gradient.xml
++++ b/mobile/android/fenix/app/src/main/res/color/private_mode_mask_gradient.xml
+@@ -10,5 +10,5 @@
+     android:startY="0"
+     android:endX="36"
+     android:endY="72"
+-    android:startColor="@color/novaViolet20"
+-    android:endColor="@color/novaWhite" />
++    android:startColor="@color/charcoal_silver"
++    android:endColor="@color/charcoal_text" />
+diff --git a/mobile/android/fenix/app/src/main/res/drawable-night/nova_onboarding_background.xml b/mobile/android/fenix/app/src/main/res/drawable-night/nova_onboarding_background.xml
+index b2786a9e63e2a9176ffa137814d6eef33984cec9..96c637ca47e66fa049f065eb17bd33713e91e9fc 100644
+--- a/mobile/android/fenix/app/src/main/res/drawable-night/nova_onboarding_background.xml
++++ b/mobile/android/fenix/app/src/main/res/drawable-night/nova_onboarding_background.xml
+@@ -10,7 +10,7 @@
+     android:viewportHeight="387.68">
+   <path
+       android:pathData="M0,0h654.19v387.68h-654.19z"
+-      android:fillColor="#210340"/>
++      android:fillColor="@color/charcoal_black"/>
+   <path
+       android:pathData="M628.25,242.93c-46.99,-8.62 -65.32,-29.08 -112.97,-29.08s-67.42,18.01 -107.11,29.08c-25.6,7.14 -53.12,9.74 -76.51,9.48 -64.7,-4.17 -75.88,-24.47 -124.81,-24.72 -41.76,-0.21 -63.19,16.39 -96.17,23.22 -38.77,8.03 -82.8,7.92 -101.54,7.41 -3.29,-0.09 -6.75,-0.19 -9.15,-0.26v64.48c1.57,-1.13 3.36,-2.39 4.61,-3.21 48.65,-32.09 109.82,-32.95 150.88,-9.62 39.87,22.65 72.31,37.98 113.39,28.07 27.41,-6.61 50.07,-23.5 72.27,-34.6 33.66,-16.83 63.76,-20.14 111.88,-5.94 34.97,10.32 61.57,21.27 98.27,21.51 43.55,0.29 72.19,-7.59 98.88,-29.42 1.07,-0.87 2.65,-2.24 4.02,-3.44v-38.26c-0.75,-0.13 -1.5,-0.26 -2.09,-0.36 -6.78,-1.19 -14.55,-2.62 -23.86,-4.33Z">
+     <aapt:attr name="android:fillColor">
+@@ -20,10 +20,10 @@
+           android:endX="328.17"
+           android:endY="183.67"
+           android:type="linear">
+-        <item android:offset="0" android:color="#FF210340"/>
+-        <item android:offset="0.23" android:color="#FF29074C"/>
+-        <item android:offset="0.65" android:color="#FF3E126D"/>
+-        <item android:offset="1" android:color="#FF541D8F"/>
++        <item android:offset="0" android:color="@color/charcoal_black"/>
++        <item android:offset="0.23" android:color="@color/charcoal_low"/>
++        <item android:offset="0.65" android:color="@color/charcoal_panel"/>
++        <item android:offset="1" android:color="@color/charcoal_raised"/>
+       </gradient>
+     </aapt:attr>
+   </path>
+@@ -36,10 +36,10 @@
+           android:endX="323.06"
+           android:endY="266.55"
+           android:type="linear">
+-        <item android:offset="0" android:color="#FF210340"/>
+-        <item android:offset="0.23" android:color="#FF29074C"/>
+-        <item android:offset="0.65" android:color="#FF3E126D"/>
+-        <item android:offset="1" android:color="#FF541D8F"/>
++        <item android:offset="0" android:color="@color/charcoal_black"/>
++        <item android:offset="0.23" android:color="@color/charcoal_low"/>
++        <item android:offset="0.65" android:color="@color/charcoal_panel"/>
++        <item android:offset="1" android:color="@color/charcoal_raised"/>
+       </gradient>
+     </aapt:attr>
+   </path>
+@@ -52,10 +52,10 @@
+           android:endX="231.01"
+           android:endY="111.88"
+           android:type="linear">
+-        <item android:offset="0" android:color="#FF210340"/>
+-        <item android:offset="0.23" android:color="#FF29074C"/>
+-        <item android:offset="0.65" android:color="#FF3E126D"/>
+-        <item android:offset="1" android:color="#FF541D8F"/>
++        <item android:offset="0" android:color="@color/charcoal_black"/>
++        <item android:offset="0.23" android:color="@color/charcoal_low"/>
++        <item android:offset="0.65" android:color="@color/charcoal_panel"/>
++        <item android:offset="1" android:color="@color/charcoal_raised"/>
+       </gradient>
+     </aapt:attr>
+   </path>
+@@ -68,10 +68,10 @@
+           android:endX="550.84"
+           android:endY="65.29"
+           android:type="linear">
+-        <item android:offset="0" android:color="#FF210340"/>
+-        <item android:offset="0.23" android:color="#FF29074C"/>
+-        <item android:offset="0.65" android:color="#FF3E126D"/>
+-        <item android:offset="1" android:color="#FF541D8F"/>
++        <item android:offset="0" android:color="@color/charcoal_black"/>
++        <item android:offset="0.23" android:color="@color/charcoal_low"/>
++        <item android:offset="0.65" android:color="@color/charcoal_panel"/>
++        <item android:offset="1" android:color="@color/charcoal_raised"/>
+       </gradient>
+     </aapt:attr>
+   </path>
+@@ -84,10 +84,10 @@
+           android:endX="173.07"
+           android:endY="58.16"
+           android:type="linear">
+-        <item android:offset="0" android:color="#FF210340"/>
+-        <item android:offset="0.23" android:color="#FF29074C"/>
+-        <item android:offset="0.65" android:color="#FF3E126D"/>
+-        <item android:offset="1" android:color="#FF541D8F"/>
++        <item android:offset="0" android:color="@color/charcoal_black"/>
++        <item android:offset="0.23" android:color="@color/charcoal_low"/>
++        <item android:offset="0.65" android:color="@color/charcoal_panel"/>
++        <item android:offset="1" android:color="@color/charcoal_raised"/>
+       </gradient>
+     </aapt:attr>
+   </path>
+diff --git a/mobile/android/fenix/app/src/main/res/drawable/ic_launcher_private_background.xml b/mobile/android/fenix/app/src/main/res/drawable/ic_launcher_private_background.xml
+index 26ba3b670c3856c09e5e5931ec1637239504c5ac..327a58c1b4f0efea7ce93df56eac7f568b5e93a2 100644
+--- a/mobile/android/fenix/app/src/main/res/drawable/ic_launcher_private_background.xml
++++ b/mobile/android/fenix/app/src/main/res/drawable/ic_launcher_private_background.xml
+@@ -16,9 +16,9 @@
+                     android:endY="-0.46862793"
+                     android:endX="48.54931"
+                     android:type="linear">
+-                <item android:offset="0" android:color="#7529A7"/>
+-                <item android:offset="0.5" android:color="#492E85"/>
+-                <item android:offset="1" android:color="#383372"/>
++                <item android:offset="0" android:color="@color/charcoal_high"/>
++                <item android:offset="0.5" android:color="@color/charcoal_panel"/>
++                <item android:offset="1" android:color="@color/charcoal_low"/>
+             </gradient>
+         </aapt:attr>
+     </path>
+diff --git a/mobile/android/fenix/app/src/main/res/drawable/ic_splash_logo.xml b/mobile/android/fenix/app/src/main/res/drawable/ic_splash_logo.xml
+index 181829ead60115188b6c69ef7cef66b5ce561f25..c1d177dbcd6a92007edac044f680f5312104ea95 100644
+--- a/mobile/android/fenix/app/src/main/res/drawable/ic_splash_logo.xml
++++ b/mobile/android/fenix/app/src/main/res/drawable/ic_splash_logo.xml
+@@ -10,7 +10,7 @@
+   <group>
+     <clip-path android:pathData="M25.75,25.93h56.5v58.25h-56.5z" />
+     <path
+-      android:fillColor="@color/fx_mobile_tertiary"
++      android:fillColor="@color/charcoal_silver"
+       android:pathData="M80.22,45.46C78.99,42.51 76.5,39.33 74.54,38.32C75.94,41.01 76.9,43.9 77.41,46.89L77.41,46.93C74.21,38.98 68.79,35.78 64.36,28.79C64.13,28.43 63.91,28.07 63.69,27.71C63.58,27.52 63.48,27.33 63.38,27.13C63.2,26.77 63.06,26.4 62.96,26.01C62.96,25.99 62.95,25.98 62.94,25.96C62.93,25.95 62.91,25.94 62.89,25.94C62.88,25.93 62.86,25.93 62.84,25.94C62.84,25.94 62.83,25.94 62.83,25.95C62.82,25.95 62.81,25.95 62.81,25.96L62.82,25.94C56.53,29.61 53.92,36.05 53.25,40.14C51.31,40.25 49.4,40.74 47.64,41.57C47.47,41.65 47.34,41.8 47.27,41.98C47.21,42.16 47.22,42.36 47.3,42.53C47.38,42.71 47.52,42.84 47.7,42.91C47.88,42.97 48.08,42.96 48.25,42.88C49.79,42.16 51.44,41.73 53.13,41.61L53.3,41.6C53.53,41.59 53.76,41.58 53.99,41.57C55.37,41.56 56.73,41.75 58.05,42.14C58.13,42.16 58.21,42.18 58.28,42.21C58.5,42.28 58.72,42.35 58.94,42.43C59.09,42.49 59.25,42.55 59.4,42.61C59.53,42.66 59.66,42.71 59.78,42.77C59.98,42.85 60.17,42.94 60.36,43.04C60.45,43.08 60.54,43.12 60.62,43.17C60.81,43.27 60.99,43.37 61.17,43.47C61.29,43.54 61.41,43.61 61.52,43.68C63.57,44.94 65.27,46.7 66.47,48.79C64.47,47.41 62.05,46.82 59.65,47.13C69.83,52.21 67.09,69.68 52.99,69.02C51.74,68.97 50.5,68.73 49.31,68.32C49.04,68.21 48.76,68.1 48.48,67.98C48.32,67.91 48.16,67.83 48.01,67.75C44.55,65.97 41.7,62.6 41.34,58.51C41.34,58.51 42.65,53.66 50.69,53.66C51.56,53.66 54.05,51.24 54.1,50.54C54.09,50.31 49.16,48.35 47.24,46.47C46.22,45.46 45.73,44.97 45.3,44.61C45.07,44.41 44.82,44.23 44.57,44.06C43.92,41.81 43.89,39.42 44.49,37.16C41.88,38.42 39.56,40.2 37.68,42.41H37.67C36.54,40.99 36.62,36.32 36.68,35.34C36.35,35.47 36.03,35.64 35.74,35.84C34.75,36.54 33.82,37.34 32.97,38.2C32.01,39.18 31.12,40.24 30.33,41.37V41.37V41.37C28.51,43.94 27.22,46.84 26.53,49.92C26.35,50.78 26.19,51.64 26.07,52.52C26.04,52.74 26.01,52.96 25.98,53.18C25.9,53.72 25.85,54.25 25.82,54.79C25.82,54.82 25.82,54.85 25.81,54.88C25.79,55.19 25.77,55.5 25.75,55.82V55.96C25.82,63.05 28.51,69.86 33.3,75.06C38.1,80.25 44.65,83.47 51.67,84.06C58.7,84.66 65.7,82.6 71.29,78.28C76.88,73.97 80.68,67.71 81.92,60.74C81.97,60.37 82.01,60.01 82.05,59.64C82.63,54.84 82,49.96 80.21,45.47L80.22,45.46Z" />
+   </group>
+ </vector>
+diff --git a/mobile/android/fenix/app/src/main/res/drawable/ic_static_shortcut_private_tab_foreground.xml b/mobile/android/fenix/app/src/main/res/drawable/ic_static_shortcut_private_tab_foreground.xml
+index 0b22e26b805a6e2b1a8bac429089778bae594471..f87209a5075389dc95f8ef9f761416b94e6fdb4c 100644
+--- a/mobile/android/fenix/app/src/main/res/drawable/ic_static_shortcut_private_tab_foreground.xml
++++ b/mobile/android/fenix/app/src/main/res/drawable/ic_static_shortcut_private_tab_foreground.xml
+@@ -11,7 +11,7 @@
+     <path
+         android:pathData="M98.6 38.1a24.6 24.6 0 0 0-35.9-3L57 40.5h-6L45.3 35a24.6 24.6 0 0 0-36 3c-1 4.4 0.7 20.6 1.6 23.2 2 10.3 10.4 18 20.5 18 5 0 9.6-2 13.2-5.2l2.2-1.9c4-3.5 10-3.5 14-0.1l3.4 2.7c3.5 2.8 7.7 4.5 12.4 4.5 10 0 18.5-7.7 20.4-18 1-2.6 2.8-18.7 1.6-23.2zM44.1 54.2c-2.4 2.6-6.2 4.3-10.4 4.3s-7.9-1.7-10.3-4.3a3.7 3.7 0 0 1 0-4.9c2.4-2.6 6.2-4.3 10.4-4.3s7.9 1.7 10.3 4.3a3.7 3.7 0 0 1 0 4.9zm40.5 0c-2.4 2.6-6.2 4.3-10.3 4.3s-8-1.7-10.4-4.3a3.7 3.7 0 0 1 0-4.9c2.4-2.6 6.2-4.3 10.4-4.3s7.9 1.7 10.3 4.3a3.7 3.7 0 0 1 0 4.9z"
+         android:strokeWidth="1"
+-        android:fillColor="#312A65"
++        android:fillColor="@color/charcoal_panel"
+         android:fillType="evenOdd"
+         android:strokeColor="#00000000"/>
+   </group>
+diff --git a/mobile/android/fenix/app/src/main/res/drawable/progress_gradient.xml b/mobile/android/fenix/app/src/main/res/drawable/progress_gradient.xml
+index 76809e6b726d6169f596d04e8df42e394e306e3a..7c39149546474c674a4994cc8debc384c48e032e 100644
+--- a/mobile/android/fenix/app/src/main/res/drawable/progress_gradient.xml
++++ b/mobile/android/fenix/app/src/main/res/drawable/progress_gradient.xml
+@@ -19,9 +19,9 @@
+                     android:topRightRadius="8dp"/>
+                 <gradient
+                     android:angle="45"
+-                    android:centerColor="#F10366"
+-                    android:endColor="#FF9100"
+-                    android:startColor="#6173FF" />
++                    android:centerColor="@color/charcoal_silver"
++                    android:endColor="@color/charcoal_text"
++                    android:startColor="@color/charcoal_muted" />
+             </shape>
+         </scale>
+     </item>
+diff --git a/mobile/android/fenix/app/src/main/res/values-night/colors.xml b/mobile/android/fenix/app/src/main/res/values-night/colors.xml
+index af1f96f7d86a5d54108ba7c8404266932db085f5..046c79588d405b14a4bb875cebf0028ccbeae6d1 100644
+--- a/mobile/android/fenix/app/src/main/res/values-night/colors.xml
++++ b/mobile/android/fenix/app/src/main/res/values-night/colors.xml
+@@ -4,66 +4,66 @@
+    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+ <resources xmlns:tools="http://schemas.android.com/tools">
+     <!-- Material3 color variables -->
+-    <color name="fx_mobile_primary">@color/novaViolet20</color>
+-    <color name="fx_mobile_on_primary">@color/novaGray80</color>
+-    <color name="fx_mobile_primary_container">@color/novaViolet60</color>
+-    <color name="fx_mobile_on_primary_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_primary_inverse">@color/novaViolet70</color>
+-    <color name="fx_mobile_secondary">@color/novaGray20</color>
+-    <color name="fx_mobile_on_secondary">@color/novaGray80</color>
+-    <color name="fx_mobile_secondary_container">@color/novaVioletDesaturated70</color>
+-    <color name="fx_mobile_on_secondary_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_tertiary">@color/novaViolet30</color>
+-    <color name="fx_mobile_on_tertiary">@color/novaGray80</color>
+-    <color name="fx_mobile_tertiary_container">@color/novaVioletDesaturated90</color>
+-    <color name="fx_mobile_on_tertiary_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_background">@color/novaGray75</color>
+-    <color name="fx_mobile_on_background">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_surface">@color/novaGray75</color>
+-    <color name="fx_mobile_on_surface">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_surface_variant">@color/novaGray65</color>
+-    <color name="fx_mobile_on_surface_variant">@color/novaVioletDesaturated0A70</color>
+-    <color name="fx_mobile_surface_inverse">@color/novaGray30</color>
+-    <color name="fx_mobile_on_surface_inverse">@color/novaGray80</color>
++    <color name="fx_mobile_primary">@color/charcoal_silver</color>
++    <color name="fx_mobile_on_primary">@color/charcoal_black</color>
++    <color name="fx_mobile_primary_container">@color/charcoal_selected</color>
++    <color name="fx_mobile_on_primary_container">@color/charcoal_text</color>
++    <color name="fx_mobile_primary_inverse">@color/charcoal_panel</color>
++    <color name="fx_mobile_secondary">@color/charcoal_muted</color>
++    <color name="fx_mobile_on_secondary">@color/charcoal_black</color>
++    <color name="fx_mobile_secondary_container">@color/charcoal_raised</color>
++    <color name="fx_mobile_on_secondary_container">@color/charcoal_text</color>
++    <color name="fx_mobile_tertiary">@color/charcoal_silver</color>
++    <color name="fx_mobile_on_tertiary">@color/charcoal_black</color>
++    <color name="fx_mobile_tertiary_container">@color/charcoal_high</color>
++    <color name="fx_mobile_on_tertiary_container">@color/charcoal_text</color>
++    <color name="fx_mobile_background">@color/charcoal_black</color>
++    <color name="fx_mobile_on_background">@color/charcoal_text</color>
++    <color name="fx_mobile_surface">@color/charcoal_black</color>
++    <color name="fx_mobile_on_surface">@color/charcoal_text</color>
++    <color name="fx_mobile_surface_variant">@color/charcoal_raised</color>
++    <color name="fx_mobile_on_surface_variant">@color/charcoal_muted</color>
++    <color name="fx_mobile_surface_inverse">@color/charcoal_silver</color>
++    <color name="fx_mobile_on_surface_inverse">@color/charcoal_black</color>
+     <color name="fx_mobile_error">@color/novaRed30</color>
+     <color name="fx_mobile_on_error">@color/novaGray80</color>
+     <color name="fx_mobile_error_container">@color/novaRed70</color>
+-    <color name="fx_mobile_on_error_container">@color/novaVioletDesaturated0</color>
++    <color name="fx_mobile_on_error_container">@color/charcoal_text</color>
+     <color name="fx_mobile_information">@color/novaBlue30</color>
+     <color name="fx_mobile_on_information">@color/novaGray80</color>
+     <color name="fx_mobile_information_container">@color/novaBlue70</color>
+-    <color name="fx_mobile_on_information_container">@color/novaVioletDesaturated0</color>
++    <color name="fx_mobile_on_information_container">@color/charcoal_text</color>
+     <color name="fx_mobile_success">@color/novaGreen30</color>
+     <color name="fx_mobile_on_success">@color/novaGray80</color>
+     <color name="fx_mobile_success_container">@color/novaGreen70</color>
+-    <color name="fx_mobile_on_success_container">@color/novaVioletDesaturated0</color>
++    <color name="fx_mobile_on_success_container">@color/charcoal_text</color>
+     <color name="fx_mobile_warning">@color/novaYellow30</color>
+     <color name="fx_mobile_on_warning">@color/novaGray80</color>
+     <color name="fx_mobile_warning_container">@color/novaYellow70</color>
+-    <color name="fx_mobile_on_warning_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_outline">@color/novaGray45</color>
+-    <color name="fx_mobile_outline_variant">@color/novaGray60</color>
+-    <color name="fx_mobile_sheet_outline">@color/novaGray75</color>
+-    <color name="fx_mobile_surface_bright">@color/novaGray65</color>
+-    <color name="fx_mobile_surface_dim">@color/novaGray85</color>
+-    <color name="fx_mobile_surface_container">@color/novaGray75</color>
+-    <color name="fx_mobile_surface_container_high">@color/novaGray70</color>
+-    <color name="fx_mobile_surface_container_highest">@color/novaGray65</color>
+-    <color name="fx_mobile_surface_container_low">@color/novaGray80</color>
+-    <color name="fx_mobile_surface_container_lowest">@color/novaGray85</color>
+-    <color name="fx_mobile_surface_container_selected">@color/novaGray55</color>
+-    <color name="fx_mobile_autofill_text">@color/novaVioletDesaturated30A55</color>
+-    <color name="fx_mobile_selected_text">@color/novaGray45A80</color>
+-    <color name="fx_mobile_icon_private">@color/novaViolet50</color>
++    <color name="fx_mobile_on_warning_container">@color/charcoal_text</color>
++    <color name="fx_mobile_outline">@color/charcoal_outline</color>
++    <color name="fx_mobile_outline_variant">@color/charcoal_divider</color>
++    <color name="fx_mobile_sheet_outline">@color/charcoal_divider</color>
++    <color name="fx_mobile_surface_bright">@color/charcoal_high</color>
++    <color name="fx_mobile_surface_dim">@color/charcoal_black</color>
++    <color name="fx_mobile_surface_container">@color/charcoal_panel</color>
++    <color name="fx_mobile_surface_container_high">@color/charcoal_raised</color>
++    <color name="fx_mobile_surface_container_highest">@color/charcoal_high</color>
++    <color name="fx_mobile_surface_container_low">@color/charcoal_low</color>
++    <color name="fx_mobile_surface_container_lowest">@color/charcoal_black</color>
++    <color name="fx_mobile_surface_container_selected">@color/charcoal_selected</color>
++    <color name="fx_mobile_autofill_text">@color/charcoal_muted</color>
++    <color name="fx_mobile_selected_text">@color/charcoal_badge</color>
++    <color name="fx_mobile_icon_private">@color/charcoal_badge</color>
+     <color name="fx_mobile_scrim">@color/novaBlackA50</color>
+ 
+-    <color name="fx_mobile_splashscreen_background">#210340</color>
++    <color name="fx_mobile_splashscreen_background">@color/charcoal_black</color>
+ 
+     <!-- Design system color variables -->
+ 
+     <!-- Layers -->
+     <!-- Card background, Menu background, Dialog, Banner -->
+-    <color name="fx_mobile_layer_color_2">@color/photonDarkGrey30</color>
++    <color name="fx_mobile_layer_color_2">@color/charcoal_panel</color>
+     <!-- Warning background -->
+     <color name="fx_mobile_layer_color_warning">@color/photonYellow70A77</color>
+     <!-- Error background -->
+@@ -71,7 +71,7 @@
+ 
+     <!-- Action -->
+     <!-- Primary button in a disabled state -->
+-    <color name="fx_mobile_action_color_primary_disabled">@color/photonViolet60A50</color>
++    <color name="fx_mobile_action_color_primary_disabled">#80525252</color>
+ 
+     <!-- Text -->
+     <!-- Text Inverted/On Color -->
+@@ -84,32 +84,32 @@
+     <!-- Icon -->
+     <!-- Icon inverted (on color) -->
+     <color name="fx_mobile_icon_color_oncolor">@color/photonLightGrey05</color>
+-    <color name="fx_mobile_icon_color_accent_violet">@color/photonViolet20</color>
++    <color name="fx_mobile_icon_color_accent_violet">@color/charcoal_silver</color>
+     <color name="fx_mobile_icon_color_accent_blue">@color/photonBlue20</color>
+     <color name="fx_mobile_icon_color_accent_pink">@color/photonPink20</color>
+     <color name="fx_mobile_icon_color_accent_green">@color/photonGreen20</color>
+     <color name="fx_mobile_icon_color_accent_yellow">@color/photonYellow20</color>
+ 
+     <!-- Normal theme colors for dark mode -->
+-    <color name="accent_normal_theme">@color/photonViolet50</color>
++    <color name="accent_normal_theme">@color/charcoal_silver</color>
+     <color name="toggle_off_knob_normal_theme">@color/toggle_off_knob_dark_theme</color>
+     <color name="toggle_off_track_normal_theme">@color/toggle_off_track_dark_theme</color>
+-    <color name="prompt_login_edit_text_cursor_color_normal_theme">@color/photonViolet50</color>
++    <color name="prompt_login_edit_text_cursor_color_normal_theme">@color/charcoal_silver</color>
+     <color name="search_suggestion_indicator_icon_color_normal_theme">@color/photonGreen60</color>
+     <color name="search_suggestion_indicator_icon_bookmark_color_normal_theme">@color/photonBlue40</color>
+ 
+     <!-- Protections Dashboard colors -->
+-    <color name="protections_dashboard_chip_background">#FF3D3264</color>
+-    <color name="protections_dashboard_chip_text">#FFD9D0F5</color>
+-    <color name="protections_dashboard_progress_bar">@color/novaViolet50</color>
+-    <color name="protections_dashboard_gradient_start">@color/novaVioletDesaturated90</color>
+-    <color name="protections_dashboard_gradient_end">@color/novaOrange70</color>
++    <color name="protections_dashboard_chip_background">@color/charcoal_raised</color>
++    <color name="protections_dashboard_chip_text">@color/charcoal_text</color>
++    <color name="protections_dashboard_progress_bar">@color/charcoal_silver</color>
++    <color name="protections_dashboard_gradient_start">@color/charcoal_black</color>
++    <color name="protections_dashboard_gradient_end">@color/charcoal_panel</color>
+ 
+     <!-- Colors for Edge to Edge background  -->
+-    <color name="homepage_edge_to_edge_gradient_start">#FF0A1A3B</color>
+-    <color name="homepage_edge_to_edge_gradient_end">#FF293564</color>
+-    <color name="homepage_tab_edge_to_edge_tab_strip_item_background_active">#213B6F</color>
+-    <color name="homepage_tab_edge_to_edge_tab_strip_item_background_inactive">#0E1A40</color>
++    <color name="homepage_edge_to_edge_gradient_start">@color/charcoal_black</color>
++    <color name="homepage_edge_to_edge_gradient_end">@color/charcoal_black</color>
++    <color name="homepage_tab_edge_to_edge_tab_strip_item_background_active">@color/charcoal_high</color>
++    <color name="homepage_tab_edge_to_edge_tab_strip_item_background_inactive">@color/charcoal_low</color>
+     <color name="homepage_tab_edge_to_edge_toolbar_background">#00000000</color>
+     <color name="homepage_tab_edge_to_edge_toolbar_outline">#00000000</color>
+ 
+@@ -126,7 +126,8 @@
+     <color name="preference_scroll_highlight">@color/fx_mobile_surface_container_highest</color>
+ 
+     <!-- Glance search bar widgets -->
+-    <color name="search_bar_widget_background">@color/novaGray65</color>
+-    <color name="search_bar_widget_button_background">@color/novaGray75</color>
+-    <color name="search_bar_widget_divider">@color/novaGray55</color>
++    <color name="search_bar_widget_background">@color/charcoal_raised</color>
++    <color name="search_bar_widget_button_background">@color/charcoal_panel</color>
++    <color name="search_bar_widget_divider">@color/charcoal_divider</color>
++    <color name="mozac_feature_readerview_selected">@color/charcoal_silver</color>
+ </resources>
+diff --git a/mobile/android/fenix/app/src/main/res/values/charcoal_colors.xml b/mobile/android/fenix/app/src/main/res/values/charcoal_colors.xml
+new file mode 100644
+index 0000000000000000000000000000000000000000..642446c8192fb128efda5b87670b88c3ada0b39f
+--- /dev/null
++++ b/mobile/android/fenix/app/src/main/res/values/charcoal_colors.xml
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="charcoal_black">#000000</color>
++    <color name="charcoal_low">#0C0C0C</color>
++    <color name="charcoal_panel">#161616</color>
++    <color name="charcoal_raised">#222222</color>
++    <color name="charcoal_high">#2C2C2C</color>
++    <color name="charcoal_selected">#3A3A3A</color>
++    <color name="charcoal_divider">#494949</color>
++    <color name="charcoal_badge">#686868</color>
++    <color name="charcoal_outline">#8A8A8A</color>
++    <color name="charcoal_muted">#BDBDBD</color>
++    <color name="charcoal_silver">#D8D8D8</color>
++    <color name="charcoal_text">#F2F2F2</color>
++</resources>
+diff --git a/mobile/android/fenix/app/src/main/res/values/colors.xml b/mobile/android/fenix/app/src/main/res/values/colors.xml
+index cafae92ae2858f0533d654856888ac1210e8bead..51f03a7e85a60a6ef4af68071b1d7451c4ab60da 100644
+--- a/mobile/android/fenix/app/src/main/res/values/colors.xml
++++ b/mobile/android/fenix/app/src/main/res/values/colors.xml
+@@ -54,10 +54,10 @@
+     <color name="fx_mobile_surface_container_selected">@color/novaGray25</color>
+     <color name="fx_mobile_autofill_text">@color/novaVioletDesaturated30</color>
+     <color name="fx_mobile_selected_text">@color/novaGray35</color>
+-    <color name="fx_mobile_icon_private">@color/novaViolet50</color>
++    <color name="fx_mobile_icon_private">@color/charcoal_badge</color>
+     <color name="fx_mobile_scrim">@color/novaBlackA50</color>
+ 
+-    <color name="fx_mobile_splashscreen_background">#FCF3EE</color>
++    <color name="fx_mobile_splashscreen_background">@color/charcoal_black</color>
+ 
+     <!-- Design system color variables -->
+ 
+@@ -93,64 +93,64 @@
+     <!-- Private theme color variables -->
+ 
+     <!-- Material3 color variables -->
+-    <color name="fx_mobile_private_primary">@color/novaViolet20</color>
+-    <color name="fx_mobile_private_on_primary">@color/novaGray80</color>
+-    <color name="fx_mobile_private_primary_container">@color/novaViolet60</color>
+-    <color name="fx_mobile_private_on_primary_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_private_primary_inverse">@color/novaViolet70</color>
+-    <color name="fx_mobile_private_secondary">@color/novaGray20</color>
+-    <color name="fx_mobile_private_on_secondary">@color/novaGray80</color>
+-    <color name="fx_mobile_private_secondary_container">@color/novaViolet70</color>
+-    <color name="fx_mobile_private_on_secondary_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_private_tertiary">@color/novaViolet30</color>
+-    <color name="fx_mobile_private_on_tertiary">@color/novaGray80</color>
+-    <color name="fx_mobile_private_tertiary_container">@color/novaVioletDesaturated90</color>
+-    <color name="fx_mobile_private_on_tertiary_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_private_background">@color/novaVioletDesaturated90</color>
+-    <color name="fx_mobile_private_on_background">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_private_surface">@color/novaVioletDesaturated90</color>
+-    <color name="fx_mobile_private_on_surface">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_private_surface_variant">@color/novaVioletDesaturated80</color>
+-    <color name="fx_mobile_private_on_surface_variant">@color/novaVioletDesaturated0A70</color>
+-    <color name="fx_mobile_private_surface_inverse">@color/novaGray30</color>
+-    <color name="fx_mobile_private_on_surface_inverse">@color/novaGray80</color>
++    <color name="fx_mobile_private_primary">@color/charcoal_silver</color>
++    <color name="fx_mobile_private_on_primary">@color/charcoal_black</color>
++    <color name="fx_mobile_private_primary_container">@color/charcoal_selected</color>
++    <color name="fx_mobile_private_on_primary_container">@color/charcoal_text</color>
++    <color name="fx_mobile_private_primary_inverse">@color/charcoal_panel</color>
++    <color name="fx_mobile_private_secondary">@color/charcoal_muted</color>
++    <color name="fx_mobile_private_on_secondary">@color/charcoal_black</color>
++    <color name="fx_mobile_private_secondary_container">@color/charcoal_raised</color>
++    <color name="fx_mobile_private_on_secondary_container">@color/charcoal_text</color>
++    <color name="fx_mobile_private_tertiary">@color/charcoal_silver</color>
++    <color name="fx_mobile_private_on_tertiary">@color/charcoal_black</color>
++    <color name="fx_mobile_private_tertiary_container">@color/charcoal_high</color>
++    <color name="fx_mobile_private_on_tertiary_container">@color/charcoal_text</color>
++    <color name="fx_mobile_private_background">@color/charcoal_black</color>
++    <color name="fx_mobile_private_on_background">@color/charcoal_text</color>
++    <color name="fx_mobile_private_surface">@color/charcoal_black</color>
++    <color name="fx_mobile_private_on_surface">@color/charcoal_text</color>
++    <color name="fx_mobile_private_surface_variant">@color/charcoal_raised</color>
++    <color name="fx_mobile_private_on_surface_variant">@color/charcoal_muted</color>
++    <color name="fx_mobile_private_surface_inverse">@color/charcoal_silver</color>
++    <color name="fx_mobile_private_on_surface_inverse">@color/charcoal_black</color>
+     <color name="fx_mobile_private_error">@color/novaRed30</color>
+     <color name="fx_mobile_private_on_error">@color/novaGray80</color>
+     <color name="fx_mobile_private_error_container">@color/novaRed70</color>
+-    <color name="fx_mobile_private_on_error_container">@color/novaVioletDesaturated0</color>
++    <color name="fx_mobile_private_on_error_container">@color/charcoal_text</color>
+     <color name="fx_mobile_private_information">@color/novaBlue30</color>
+     <color name="fx_mobile_private_on_information">@color/novaGray80</color>
+     <color name="fx_mobile_private_information_container">@color/novaBlue70</color>
+-    <color name="fx_mobile_private_on_information_container">@color/novaVioletDesaturated0</color>
++    <color name="fx_mobile_private_on_information_container">@color/charcoal_text</color>
+     <color name="fx_mobile_private_success">@color/novaGreen30</color>
+     <color name="fx_mobile_private_on_success">@color/novaGray80</color>
+     <color name="fx_mobile_private_success_container">@color/novaGreen70</color>
+-    <color name="fx_mobile_private_on_success_container">@color/novaVioletDesaturated0</color>
++    <color name="fx_mobile_private_on_success_container">@color/charcoal_text</color>
+     <color name="fx_mobile_private_warning">@color/novaYellow30</color>
+     <color name="fx_mobile_private_on_warning">@color/novaGray80</color>
+     <color name="fx_mobile_private_warning_container">@color/novaYellow70</color>
+-    <color name="fx_mobile_private_on_warning_container">@color/novaVioletDesaturated0</color>
+-    <color name="fx_mobile_private_outline">@color/novaGray45</color>
+-    <color name="fx_mobile_private_outline_variant">#FF332752</color>
+-    <color name="fx_mobile_private_sheet_outline">@color/novaVioletDesaturated90</color>
+-    <color name="fx_mobile_private_surface_bright">@color/novaVioletDesaturated80</color>
+-    <color name="fx_mobile_private_surface_dim">#FF0D0321</color>
+-    <color name="fx_mobile_private_surface_container">@color/novaVioletDesaturated90</color>
+-    <color name="fx_mobile_private_surface_container_high">#FF20163A</color>
+-    <color name="fx_mobile_private_surface_container_highest">@color/novaVioletDesaturated80</color>
+-    <color name="fx_mobile_private_surface_container_low">#FF11042B</color>
+-    <color name="fx_mobile_private_surface_container_lowest">#FF0D0321</color>
+-    <color name="fx_mobile_private_surface_container_selected">@color/novaVioletDesaturated60</color>
+-    <color name="fx_mobile_private_autofill_text">@color/novaVioletDesaturated30A55</color>
+-    <color name="fx_mobile_private_selected_text">@color/novaGray45A81</color>
+-    <color name="fx_mobile_private_icon_private">@color/novaViolet50</color>
++    <color name="fx_mobile_private_on_warning_container">@color/charcoal_text</color>
++    <color name="fx_mobile_private_outline">@color/charcoal_outline</color>
++    <color name="fx_mobile_private_outline_variant">@color/charcoal_divider</color>
++    <color name="fx_mobile_private_sheet_outline">@color/charcoal_divider</color>
++    <color name="fx_mobile_private_surface_bright">@color/charcoal_high</color>
++    <color name="fx_mobile_private_surface_dim">@color/charcoal_black</color>
++    <color name="fx_mobile_private_surface_container">@color/charcoal_panel</color>
++    <color name="fx_mobile_private_surface_container_high">@color/charcoal_raised</color>
++    <color name="fx_mobile_private_surface_container_highest">@color/charcoal_high</color>
++    <color name="fx_mobile_private_surface_container_low">@color/charcoal_low</color>
++    <color name="fx_mobile_private_surface_container_lowest">@color/charcoal_black</color>
++    <color name="fx_mobile_private_surface_container_selected">@color/charcoal_selected</color>
++    <color name="fx_mobile_private_autofill_text">@color/charcoal_muted</color>
++    <color name="fx_mobile_private_selected_text">@color/charcoal_badge</color>
++    <color name="fx_mobile_private_icon_private">@color/charcoal_badge</color>
+     <color name="fx_mobile_private_scrim">@color/novaBlackA50</color>
+ 
+     <!-- Layers -->
+     <!-- Card background, Menu background, Dialog, Banner -->
+-    <color name="fx_mobile_private_layer_color_2">@color/photonViolet90</color>
++    <color name="fx_mobile_private_layer_color_2">@color/charcoal_panel</color>
+     <!-- Search -->
+-    <color name="fx_mobile_private_layer_color_3">@color/photonInk90</color>
++    <color name="fx_mobile_private_layer_color_3">@color/charcoal_raised</color>
+ 
+     <!-- Action -->
+     <!-- Primary button in a disabled state -->
+@@ -164,38 +164,38 @@
+     <!-- The OLED theme inherits from the dark theme and only the tokens that differ are listed. -->
+ 
+     <!-- Material3 color variables -->
+-    <color name="fx_mobile_oled_primary_container" tools:ignore="UnusedResources">@color/novaViolet70</color>
+-    <color name="fx_mobile_oled_on_primary_container" tools:ignore="UnusedResources">@color/novaGray20</color>
+-    <color name="fx_mobile_oled_secondary_container" tools:ignore="UnusedResources">@color/novaVioletDesaturated80</color>
+-    <color name="fx_mobile_oled_on_secondary_container" tools:ignore="UnusedResources">@color/novaGray20</color>
+-    <color name="fx_mobile_oled_tertiary_container" tools:ignore="UnusedResources">@color/novaGray90</color>
+-    <color name="fx_mobile_oled_on_tertiary_container" tools:ignore="UnusedResources">@color/novaGray20</color>
+-    <color name="fx_mobile_oled_background" tools:ignore="UnusedResources">@color/novaBlack</color>
+-    <color name="fx_mobile_oled_on_background" tools:ignore="UnusedResources">@color/novaGray20</color>
+-    <color name="fx_mobile_oled_surface" tools:ignore="UnusedResources">@color/novaBlack</color>
+-    <color name="fx_mobile_oled_on_surface" tools:ignore="UnusedResources">@color/novaGray20</color>
+-    <color name="fx_mobile_oled_on_surface_variant" tools:ignore="UnusedResources">@color/novaGray40</color>
++    <color name="fx_mobile_oled_primary_container" tools:ignore="UnusedResources">@color/charcoal_selected</color>
++    <color name="fx_mobile_oled_on_primary_container" tools:ignore="UnusedResources">@color/charcoal_text</color>
++    <color name="fx_mobile_oled_secondary_container" tools:ignore="UnusedResources">@color/charcoal_raised</color>
++    <color name="fx_mobile_oled_on_secondary_container" tools:ignore="UnusedResources">@color/charcoal_text</color>
++    <color name="fx_mobile_oled_tertiary_container" tools:ignore="UnusedResources">@color/charcoal_high</color>
++    <color name="fx_mobile_oled_on_tertiary_container" tools:ignore="UnusedResources">@color/charcoal_text</color>
++    <color name="fx_mobile_oled_background" tools:ignore="UnusedResources">@color/charcoal_black</color>
++    <color name="fx_mobile_oled_on_background" tools:ignore="UnusedResources">@color/charcoal_text</color>
++    <color name="fx_mobile_oled_surface" tools:ignore="UnusedResources">@color/charcoal_black</color>
++    <color name="fx_mobile_oled_on_surface" tools:ignore="UnusedResources">@color/charcoal_text</color>
++    <color name="fx_mobile_oled_on_surface_variant" tools:ignore="UnusedResources">@color/charcoal_muted</color>
+     <color name="fx_mobile_oled_error_container" tools:ignore="UnusedResources">@color/novaRed80</color>
+-    <color name="fx_mobile_oled_on_error_container" tools:ignore="UnusedResources">@color/novaGray20</color>
++    <color name="fx_mobile_oled_on_error_container" tools:ignore="UnusedResources">@color/charcoal_text</color>
+     <color name="fx_mobile_oled_information_container" tools:ignore="UnusedResources">@color/novaBlue80</color>
+-    <color name="fx_mobile_oled_on_information_container" tools:ignore="UnusedResources">@color/novaGray20</color>
++    <color name="fx_mobile_oled_on_information_container" tools:ignore="UnusedResources">@color/charcoal_text</color>
+     <color name="fx_mobile_oled_success_container" tools:ignore="UnusedResources">@color/novaGreen80</color>
+-    <color name="fx_mobile_oled_on_success_container" tools:ignore="UnusedResources">@color/novaGray20</color>
++    <color name="fx_mobile_oled_on_success_container" tools:ignore="UnusedResources">@color/charcoal_text</color>
+     <color name="fx_mobile_oled_warning_container" tools:ignore="UnusedResources">@color/novaYellow80</color>
+-    <color name="fx_mobile_oled_on_warning_container" tools:ignore="UnusedResources">@color/novaGray20</color>
+-    <color name="fx_mobile_oled_outline" tools:ignore="UnusedResources">@color/novaGray50</color>
+-    <color name="fx_mobile_oled_outline_variant" tools:ignore="UnusedResources">@color/novaGray65</color>
+-    <color name="fx_mobile_oled_sheet_outline" tools:ignore="UnusedResources">@color/novaGray65</color>
+-    <color name="fx_mobile_oled_surface_bright" tools:ignore="UnusedResources">@color/novaGray80</color>
+-    <color name="fx_mobile_oled_surface_dim" tools:ignore="UnusedResources">@color/novaBlack</color>
+-    <color name="fx_mobile_oled_surface_container" tools:ignore="UnusedResources">@color/novaBlack</color>
+-    <color name="fx_mobile_oled_surface_container_high" tools:ignore="UnusedResources">@color/novaGray90</color>
+-    <color name="fx_mobile_oled_surface_container_highest" tools:ignore="UnusedResources">@color/novaGray80</color>
+-    <color name="fx_mobile_oled_surface_container_low" tools:ignore="UnusedResources">@color/novaGray90</color>
+-    <color name="fx_mobile_oled_surface_container_lowest" tools:ignore="UnusedResources">@color/novaBlack</color>
+-    <color name="fx_mobile_oled_surface_container_selected" tools:ignore="UnusedResources">@color/novaGray65</color>
+-    <color name="fx_mobile_oled_autofill_text" tools:ignore="UnusedResources">@color/novaVioletDesaturated60</color>
+-    <color name="fx_mobile_oled_selected_text" tools:ignore="UnusedResources">@color/novaGray60</color>
++    <color name="fx_mobile_oled_on_warning_container" tools:ignore="UnusedResources">@color/charcoal_text</color>
++    <color name="fx_mobile_oled_outline" tools:ignore="UnusedResources">@color/charcoal_outline</color>
++    <color name="fx_mobile_oled_outline_variant" tools:ignore="UnusedResources">@color/charcoal_divider</color>
++    <color name="fx_mobile_oled_sheet_outline" tools:ignore="UnusedResources">@color/charcoal_divider</color>
++    <color name="fx_mobile_oled_surface_bright" tools:ignore="UnusedResources">@color/charcoal_high</color>
++    <color name="fx_mobile_oled_surface_dim" tools:ignore="UnusedResources">@color/charcoal_black</color>
++    <color name="fx_mobile_oled_surface_container" tools:ignore="UnusedResources">@color/charcoal_panel</color>
++    <color name="fx_mobile_oled_surface_container_high" tools:ignore="UnusedResources">@color/charcoal_raised</color>
++    <color name="fx_mobile_oled_surface_container_highest" tools:ignore="UnusedResources">@color/charcoal_high</color>
++    <color name="fx_mobile_oled_surface_container_low" tools:ignore="UnusedResources">@color/charcoal_low</color>
++    <color name="fx_mobile_oled_surface_container_lowest" tools:ignore="UnusedResources">@color/charcoal_black</color>
++    <color name="fx_mobile_oled_surface_container_selected" tools:ignore="UnusedResources">@color/charcoal_selected</color>
++    <color name="fx_mobile_oled_autofill_text" tools:ignore="UnusedResources">@color/charcoal_muted</color>
++    <color name="fx_mobile_oled_selected_text" tools:ignore="UnusedResources">@color/charcoal_badge</color>
+ 
+     <!-- Light theme color palette -->
+     <color name="primary_text_light_theme">@color/photonInk80</color>
+@@ -203,8 +203,8 @@
+     <color name="dark_grey_90_gradient_end">#0015141A</color>
+ 
+     <!-- Private theme color palette -->
+-    <color name="accent_private_theme">@color/photonViolet50</color>
+-    <color name="prompt_login_edit_text_cursor_color_private_theme">@color/photonViolet50</color>
++    <color name="accent_private_theme">@color/charcoal_silver</color>
++    <color name="prompt_login_edit_text_cursor_color_private_theme">@color/charcoal_silver</color>
+ 
+     <!-- Normal theme colors for light mode -->
+     <color name="accent_normal_theme">@color/photonInk20</color>
+@@ -220,11 +220,11 @@
+     <color name="protections_dashboard_gradient_end">@color/novaOrange10</color>
+ 
+     <!-- Tracking protection dashboard colors used in private browsing mode -->
+-    <color name="protections_dashboard_chip_background_private">#FF3D3264</color>
+-    <color name="protections_dashboard_chip_text_private">#FFD9D0F5</color>
+-    <color name="protections_dashboard_progress_bar_private">@color/novaViolet50</color>
+-    <color name="protections_dashboard_gradient_start_private">@color/novaVioletDesaturated90</color>
+-    <color name="protections_dashboard_gradient_end_private">@color/novaOrange70</color>
++    <color name="protections_dashboard_chip_background_private">@color/charcoal_raised</color>
++    <color name="protections_dashboard_chip_text_private">@color/charcoal_text</color>
++    <color name="protections_dashboard_progress_bar_private">@color/charcoal_silver</color>
++    <color name="protections_dashboard_gradient_start_private">@color/charcoal_black</color>
++    <color name="protections_dashboard_gradient_end_private">@color/charcoal_panel</color>
+ 
+     <!-- Colors for Edge to Edge background  -->
+     <color name="homepage_edge_to_edge_gradient_start">#FFF7EAE8</color>
+@@ -233,7 +233,7 @@
+     <color name="homepage_tab_edge_to_edge_tab_strip_item_background_inactive">#EFDCD6</color>
+     <color name="homepage_tab_edge_to_edge_toolbar_background">#00000000</color>
+     <color name="homepage_tab_edge_to_edge_toolbar_outline">#00000000</color>
+-    <color name="homepage_tab_edge_to_edge_private_toolbar_outline">#564A75</color>
++    <color name="homepage_tab_edge_to_edge_private_toolbar_outline">@color/charcoal_divider</color>
+ 
+     <!-- Toggle Colors -->
+     <color name="toggle_off_knob_dark_theme">@color/photonLightGrey05</color>
+@@ -251,7 +251,7 @@
+ 
+     <!-- Reader View colors -->
+     <color name="mozac_feature_readerview_text_color" tools:ignore="UnusedResources">@color/fx_mobile_on_surface</color>
+-    <color name="mozac_feature_readerview_selected">@color/photonViolet40</color>
++    <color name="mozac_feature_readerview_selected">@color/charcoal_badge</color>
+ 
+     <!-- Share UI -->
+     <color name="default_share_background">#E3E2E3</color>
+@@ -263,7 +263,7 @@
+     <color name="ic_launcher_background">#FDFDFD</color>
+ 
+     <!-- Private Browsing Mode Persistent Notification -->
+-    <color name="pbm_notification_color">@color/photonViolet70</color>
++    <color name="pbm_notification_color">@color/charcoal_badge</color>
+ 
+     <!-- Static Shortcut Background Color -->
+     <color name="static_shortcut_background">#F5F5F5</color>
+@@ -286,12 +286,12 @@
+     <color name="mozac_feature_addons_messagebar_warning_background_color" tools:ignore="UnusedResources">@color/fx_mobile_layer_color_warning</color>
+ 
+     <!-- Private Mode mask icon circle fill colors for mozac_ic_private_mode_circle_fill_stroke_20 -->
+-    <color name="mozac_ic_private_mode_circle_fill" tools:ignore="UnusedResources">@color/fx_mobile_icon_private</color>
++    <color name="mozac_ic_private_mode_circle_fill" tools:ignore="UnusedResources">@color/charcoal_badge</color>
+     <color name="mozac_ic_private_mode_circle_stroke_fill" tools:ignore="UnusedResources">@color/fx_mobile_private_surface</color>
+     <color name="mozac_ic_private_mode_mask_fill" tools:ignore="UnusedResources">@color/fx_mobile_private_on_surface</color>
+ 
+     <!-- Private mode circle fill colors for mozac_ic_private_mode_circle_fill_72 -->
+-    <color name="mozac_ic_private_mode_circle_fill_72_background_color" tools:ignore="UnusedResources">@color/fx_mobile_icon_private</color>
++    <color name="mozac_ic_private_mode_circle_fill_72_background_color" tools:ignore="UnusedResources">@color/charcoal_badge</color>
+     <color name="mozac_ic_private_mode_circle_fill_72_icon_color" tools:ignore="UnusedResources">@color/private_mode_mask_gradient</color>
+ 
+     <!-- Glance search bar widgets -->
+diff --git a/mobile/android/fenix/app/src/main/res/values/styles.xml b/mobile/android/fenix/app/src/main/res/values/styles.xml
+index 40cb3b3e13b89e3f152738ec7f34efc4ee3c2aff..8d4bf96c0ff1e67106c9d1ba9a7602ba01c1c066 100644
+--- a/mobile/android/fenix/app/src/main/res/values/styles.xml
++++ b/mobile/android/fenix/app/src/main/res/values/styles.xml
+@@ -409,8 +409,8 @@
+         <!-- Shared widget colors -->
+         <item name="mozac_primary_text_color">@color/fx_mobile_private_on_surface</item>
+         <item name="mozac_caption_text_color">@color/fx_mobile_private_on_surface_variant</item>
+-        <item name="mozac_widget_favicon_background_color">@color/photonInk50</item>
+-        <item name="mozac_widget_favicon_border_color">@color/photonInk50</item>
++        <item name="mozac_widget_favicon_background_color">@color/charcoal_raised</item>
++        <item name="mozac_widget_favicon_border_color">@color/charcoal_raised</item>
+ 
+         <!-- Drawables -->
+         <item name="fenixLogo">@drawable/ic_logo_wordmark_private</item>
+diff --git a/mobile/android/fenix/app/src/main/res/xml/customization_preferences.xml b/mobile/android/fenix/app/src/main/res/xml/customization_preferences.xml
+index 87758782a9d52bad18d758daa7ad5ab9b6b2fb04..80a2e2b0a8ad2379ad6c04ab9df946c2246f97e5 100644
+--- a/mobile/android/fenix/app/src/main/res/xml/customization_preferences.xml
++++ b/mobile/android/fenix/app/src/main/res/xml/customization_preferences.xml
+@@ -20,12 +20,12 @@
+         android:title="@string/preferences_theme"
+         app:iconSpaceReserved="false">
+         <org.mozilla.fenix.settings.RadioButtonPreference
+-            android:defaultValue="@bool/underAPI28"
++            android:defaultValue="false"
+             android:key="@string/pref_key_light_theme"
+             android:title="@string/preference_light_theme" />
+ 
+         <org.mozilla.fenix.settings.RadioButtonPreference
+-            android:defaultValue="false"
++            android:defaultValue="true"
+             android:key="@string/pref_key_dark_theme"
+             android:title="@string/preference_dark_theme" />
+ 
+@@ -42,7 +42,7 @@
+             app:isPreferenceVisible="@bool/underAPI28" />
+ 
+         <org.mozilla.fenix.settings.RadioButtonPreference
+-            android:defaultValue="@bool/API28"
++            android:defaultValue="false"
+             android:key="@string/pref_key_follow_device_theme"
+             android:title="@string/preference_follow_device_theme"
+             app:isPreferenceVisible="@bool/API28" />
+diff --git a/mobile/android/fenix/app/src/release/AndroidManifest.xml b/mobile/android/fenix/app/src/release/AndroidManifest.xml
+index db7035c70e615cc27da1993550ee171f39a09294..c2d09336d22ad628de68bfcd11ddf9287d9805dc 100644
+--- a/mobile/android/fenix/app/src/release/AndroidManifest.xml
++++ b/mobile/android/fenix/app/src/release/AndroidManifest.xml
+@@ -3,15 +3,10 @@
+    - License, v. 2.0. If a copy of the MPL was not distributed with this
+    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+ 
+-<!--
+-  sharedUserId: This release type is meant to replace Firefox (Release channel) and therefore needs to inherit
+-                its sharedUserId for all eternity. Shipping an app update without sharedUserId can have
+-                fatal consequences. For example see:
+-                - https://issuetracker.google.com/issues/36924841
+-                - https://issuetracker.google.com/issues/36905922
+--->
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:sharedUserId="${sharedUserId}"
+-    tools:ignore="Deprecated">
++    xmlns:tools="http://schemas.android.com/tools">
++    <application
++        android:icon="@mipmap/ic_charcoal_launcher"
++        android:roundIcon="@mipmap/ic_charcoal_launcher"
++        tools:replace="android:icon,android:roundIcon" />
+ </manifest>
+diff --git a/mobile/android/fenix/app/src/release/res/drawable/ic_charcoal_mark.xml b/mobile/android/fenix/app/src/release/res/drawable/ic_charcoal_mark.xml
+new file mode 100644
+index 0000000000000000000000000000000000000000..ffdeb7dbbba13b7c18aa12f7d7a9dcc384650e69
+--- /dev/null
++++ b/mobile/android/fenix/app/src/release/res/drawable/ic_charcoal_mark.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="108dp" android:height="108dp"
++    android:viewportWidth="108" android:viewportHeight="108">
++    <path android:pathData="M64,42 A16,16 0,1 0,64,66" android:strokeColor="@color/charcoal_text"
++        android:strokeWidth="5" android:strokeLineCap="round" />
++</vector>
+diff --git a/mobile/android/fenix/app/src/release/res/mipmap-anydpi-v26/ic_charcoal_launcher.xml b/mobile/android/fenix/app/src/release/res/mipmap-anydpi-v26/ic_charcoal_launcher.xml
+new file mode 100644
+index 0000000000000000000000000000000000000000..02950f76deb305997cbf1b1a78fe519b488b461c
+--- /dev/null
++++ b/mobile/android/fenix/app/src/release/res/mipmap-anydpi-v26/ic_charcoal_launcher.xml
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@color/charcoal_panel" />
++    <foreground android:drawable="@drawable/ic_charcoal_mark" />
++</adaptive-icon>
+diff --git a/mobile/android/fenix/app/src/release/res/mipmap-anydpi-v33/ic_charcoal_launcher.xml b/mobile/android/fenix/app/src/release/res/mipmap-anydpi-v33/ic_charcoal_launcher.xml
+new file mode 100644
+index 0000000000000000000000000000000000000000..0d556635db0384ba9abdf39ff8e106fed3dea2eb
+--- /dev/null
++++ b/mobile/android/fenix/app/src/release/res/mipmap-anydpi-v33/ic_charcoal_launcher.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@color/charcoal_panel" />
++    <foreground android:drawable="@drawable/ic_charcoal_mark" />
++    <monochrome android:drawable="@drawable/ic_charcoal_mark" />
++</adaptive-icon>
+diff --git a/mobile/android/fenix/app/src/release/res/mipmap-anydpi/ic_charcoal_launcher.xml b/mobile/android/fenix/app/src/release/res/mipmap-anydpi/ic_charcoal_launcher.xml
+new file mode 100644
+index 0000000000000000000000000000000000000000..8a88426b613625c21783ceed999556f2aca044e9
+--- /dev/null
++++ b/mobile/android/fenix/app/src/release/res/mipmap-anydpi/ic_charcoal_launcher.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="48dp" android:height="48dp"
++    android:viewportWidth="108" android:viewportHeight="108">
++    <path android:fillColor="@color/charcoal_panel" android:pathData="M54,3a51,51 0,1 1,0,102a51,51 0,1 1,0,-102z" />
++    <path android:pathData="M64,42 A16,16 0,1 0,64,66" android:strokeColor="@color/charcoal_text"
++        android:strokeWidth="5" android:strokeLineCap="round" />
++</vector>
+diff --git a/mobile/android/fenix/app/src/release/res/values/static_strings.xml b/mobile/android/fenix/app/src/release/res/values/static_strings.xml
+index c13e4d45252dee3b08c2cd552d8ffb2a49f32255..767f4aeb19d6dda9406d79c9b65e0ae9238e4523 100644
+--- a/mobile/android/fenix/app/src/release/res/values/static_strings.xml
++++ b/mobile/android/fenix/app/src/release/res/values/static_strings.xml
+@@ -4,5 +4,5 @@
+    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+ <resources>
+     <!-- Name of the application -->
+-    <string name="app_name" translatable="false">Firefox</string>
++    <string name="app_name" translatable="false">Charcoal Browser</string>
+ </resources>
+diff --git a/mobile/android/fenix/app/src/release/res/xml/shortcuts.xml b/mobile/android/fenix/app/src/release/res/xml/shortcuts.xml
+index 31d6b91379cbfe57cad0a80a849964a02052abe3..b73736803810685e434fe5c36ad5ea9e72aeb33f 100644
+--- a/mobile/android/fenix/app/src/release/res/xml/shortcuts.xml
++++ b/mobile/android/fenix/app/src/release/res/xml/shortcuts.xml
+@@ -11,7 +11,7 @@
+         android:shortcutShortLabel="@string/home_screen_shortcut_passwords">
+         <intent
+             android:action="org.mozilla.fenix.OPEN_PASSWORD_MANAGER"
+-            android:targetPackage="org.mozilla.firefox"
++            android:targetPackage="app.charcoal.browser"
+             android:targetClass="org.mozilla.fenix.IntentReceiverActivity" />
+     </shortcut>
+     <shortcut
+@@ -21,7 +21,7 @@
+         android:shortcutShortLabel="@string/home_screen_shortcut_open_new_tab_2">
+         <intent
+             android:action="org.mozilla.fenix.OPEN_TAB"
+-            android:targetPackage="org.mozilla.firefox"
++            android:targetPackage="app.charcoal.browser"
+             android:targetClass="org.mozilla.fenix.IntentReceiverActivity" />
+     </shortcut>
+     <shortcut
+@@ -31,7 +31,7 @@
+         android:shortcutShortLabel="@string/home_screen_shortcut_open_new_private_tab_2">
+         <intent
+             android:action="org.mozilla.fenix.OPEN_PRIVATE_TAB"
+-            android:targetPackage="org.mozilla.firefox"
++            android:targetPackage="app.charcoal.browser"
+             android:targetClass="org.mozilla.fenix.IntentReceiverActivity" />
+     </shortcut>
+ </shortcuts>
