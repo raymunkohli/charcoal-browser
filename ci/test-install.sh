@@ -31,6 +31,18 @@ fi
 adb install "$apk"
 pkg=app.charcoal.browser
 adb shell pm path "$pkg" | grep -F 'package:'
+# A light system preference exercises the app's first-run dark default.
+adb shell cmd uimode night no
+for expected in 'fx_mobile_private_surface:#ff000000' 'fx_mobile_private_surface_container:#ff161616'; do
+    role=${expected%%:*}; rgb=${expected#*:}
+    if value=$(adb shell cmd overlay lookup "$pkg" "$pkg:color/$role" 2>/dev/null); then
+        value=$(printf '%s' "$value" | tr -d '\r' | tr '[:upper:]' '[:lower:]')
+        if [[ $value == \#* ]]; then
+            [[ $value == "$rgb" ]] || { echo "Unexpected installed colour $role=$value" >&2; exit 1; }
+            echo "Verified installed private colour $role=$value"
+        fi
+    fi
+done
 adb logcat -c
 adb shell am start -W -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -p "$pkg"
 sleep 6
