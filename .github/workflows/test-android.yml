@@ -1,0 +1,34 @@
+name: Test Android installation
+on:
+  workflow_run:
+    workflows: [Build Charcoal Browser]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Verified ARM64 build run ID
+        required: true
+permissions:
+  actions: read
+  contents: read
+jobs:
+  install:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Download the release build
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: CharcoalBrowser-160.0-arm64
+          path: package
+          run-id: ${{ github.event.workflow_run.id || inputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Install and launch on Android 15
+        if: ${{ hashFiles('package/CharcoalBrowser-160.0-arm64.apk') != '' }}
+        run: |
+          (cd package && sha256sum -c SHA256SUMS)
+          bash ci/test-install.sh package/CharcoalBrowser-160.0-arm64.apk
