@@ -12,7 +12,7 @@ def select_apk(object_dir: Path, version: str) -> Path:
         if build.get('applicationId') != 'app.charcoal.browser' or build.get('variantName') != 'release':
             continue
         for output in build['elements']:
-            abis = [it['identifier'] for it in output['filters'] if it['filterType'] == 'ABI']
+            abis = [it.get('value') or it.get('identifier') for it in output['filters'] if it['filterType'] == 'ABI']
             if abis == ['arm64-v8a'] and output['versionName'] == version and output['versionCode'] > 0:
                 matches.append(metadata.parent / output['outputFile'])
     if len(matches) != 1:
