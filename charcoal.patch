@@ -360,6 +360,14 @@ index 03399d00fcf00ae37cecd164ed74de7d9c1ff14f..34ac5b0b1c08f400f86102f200904fc7
          }
          benchmark releaseTemplate >> {
              initWith buildTypes.nightly
+@@ -305,4 +295,7 @@ androidComponents {
+             def versionName = buildType == 'nightly' ?
+                     "${Config.nightlyVersionName(project)}" :
+                     "${Config.releaseVersionName(project)}"
++            if (buildType == 'release') {
++                versionName = Config.readVersionFromFile(project)
++            }
+             project.logger.debug("versionName override: $versionName")
 diff --git a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/FenixApplication.kt b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/FenixApplication.kt
 index 697146f5641412ac653d9d61e90a51403db55f37..309d987ffed2a022a6590e09249898ec5ccba488 100644
 --- a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/FenixApplication.kt

@@ -3,8 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths:
-      - 'ci/request/**'
+    paths: ['ci/request/**']
 permissions:
   contents: read
 concurrency:
@@ -12,17 +11,51 @@ concurrency:
   cancel-in-progress: false
 jobs:
   android:
+    name: Compile ARM64 release
     runs-on: ubuntu-24.04
-    timeout-minutes: 240
+    timeout-minutes: 180
     steps:
-      - name: Check out the build recipe
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
       - name: Prepare the runner
         run: bash ci/prepare.sh
       - name: Compile Firefox for ARM64
         run: bash build.sh --unsigned
+      - name: Retain the unsigned ARM64 package
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: CharcoalBrowser-160.0-unsigned
+          path: dist/CharcoalBrowser-160.0-arm64-unsigned.apk
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+      - name: Locate recoverable Gradle outputs
+        if: failure()
+        run: bash ci/retain-output.sh
+      - name: Retain recoverable Gradle outputs
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: CharcoalBrowser-160.0-gradle-outputs
+          path: dist/recoverable-build/
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 7
+  sign:
+    name: Sign and verify ARM64 release
+    needs: android
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Retrieve the compiled package
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: CharcoalBrowser-160.0-unsigned
+          path: dist
       - name: Sign and verify the release
         env:
           CHARCOAL_KEYSTORE_B64: ${{ secrets.CHARCOAL_KEYSTORE_B64 }}

@@ -68,13 +68,13 @@ else
     bootstrap_target=mobile_android
 fi
 ./mach --no-interactive bootstrap --no-agentic-tools --application-choice="$bootstrap_target"
+export ORG_GRADLE_PROJECT_versionName="$version"
 if ! ./mach build; then
     if [[ $mode == artifact ]]; then echo 'If Mozilla reports an expired or missing native artifact, retry with bash build.sh --from-source.' >&2; fi
     exit 1
 fi
 ./mach gradle :fenix:assembleRelease -PdisableDebugSigning "-PversionName=$version"
-# Android Gradle Plugin output metadata distinguishes Fenix from other APKs,
-# split ABI from universal, and release from debug. No wildcard first-match.
+# Check the installed manifest and actual Gecko libraries in the generated APKs.
 apk=$(python3 "$kit/apk_output.py" "$object_dir" "$version")
 dist="$kit/dist"
 mkdir -p -- "$dist"
