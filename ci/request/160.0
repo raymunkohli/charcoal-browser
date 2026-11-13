@@ -1,1 +1,2 @@
 Build the ARM64 Charcoal Browser release from FIREFOX-ANDROID_160_0_RELEASE.
+Retry ARM64 packaging with the corrected Gradle output selector.
